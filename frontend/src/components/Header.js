@@ -1,0 +1,32 @@
+import React, { useState } from 'react';
+import {AppBar, Tab, Tabs, Toolbar, Typography} from "@mui/material";
+import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
+import {NavLink } from "react-router-dom";
+
+const Header = () => {
+    const [value, setValue] = useState();
+  return (
+    <div>
+        <AppBar sx={{backgroundColor:"#001f54"}}position="sticky">
+           <Toolbar>
+              <NavLink to="/" style={{color:"white"}}>
+                   <Typography><LibraryBooksOutlinedIcon/></Typography>
+              </NavLink>
+              <Tabs 
+                 sx={{ml:"auto"}}
+                 onChange={(e,val) => setValue(val)}
+                 textColor="inherit" 
+                 indicatorColor='primary'
+                 value={value}>
+                <Tab LinkComponent={NavLink} to="/add" label="Add Book" />
+                <Tab LinkComponent={NavLink} to="/books" label="books" />
+                <Tab LinkComponent={NavLink} to="/about" label="About Us" />
+              </Tabs>
+           </Toolbar>
+           
+        </AppBar>
+    </div>
+  )
+}
+
+export default Header;
